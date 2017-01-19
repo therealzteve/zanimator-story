@@ -1,13 +1,19 @@
 import storyHandler from './timer/story-handler';
 
-export default {
-  start: function(){
+export function create(options) {
 
-  },
-  stop: function(){
-
-  },
-  addStory: function(story){
-
+  var sHandler = storyHandler();
+  if(options.interval){
+    sHandler.interval = options.interval;
   }
+  
+  return {
+    play : function(story){
+      sHandler.story = story;
+      sHandler.start();
+    },
+    stop: function(){
+      sHandler.stop();
+    }
+  };
 }

@@ -48,7 +48,7 @@ gulp.task('lint', () => {
 gulp.task('buildlib', ['scripts'], () => {
   var b = browserify({
       debug: true,
-      standalone: 'zAnimator'
+      standalone: 'zAnimatorStory'
     })
     .transform(babelify)
     .require('.tmp/main.js',
@@ -60,7 +60,7 @@ gulp.task('buildlib', ['scripts'], () => {
 
     return b.bundle()
      .on('error', function (err) { console.log('Error: ' + err.message); })
-     .pipe(source('zAnimator.js'))
+     .pipe(source('zAnimator-story.js'))
      .pipe(gulp.dest('lib/'));
 });
 

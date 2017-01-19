@@ -1,7 +1,5 @@
-export default function(){
-
-  this.read = function(storyPart){
+export default {
+  read: function(storyPart){
     console.log(storyPart);
-  };
-
-}
+  }
+};
