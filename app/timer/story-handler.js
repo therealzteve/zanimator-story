@@ -1,8 +1,9 @@
 import timer from './timer';
-import storyReader from '../story-reader';
+import constructStoryReader from '../story-reader';
 
-export default function(){
+export default function(options){
   var internalTimer = timer(handler);
+  var storyReader = constructStoryReader({zAnimator: options.zAnimator});
   var storyHandler = {};
   storyHandler.timePassed = 0;
   storyHandler.interval = 100; // ~60 fps
