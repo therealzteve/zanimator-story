@@ -5,7 +5,7 @@ export default function(options){
 
   handler.handle = function(data){
     data = prepareOptions(data);
-    data.parent.add(data.child);
+    data.parent.remove(data.child);
   };
 
   return handler;

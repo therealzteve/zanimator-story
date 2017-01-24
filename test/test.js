@@ -37,6 +37,24 @@ var testData = {
             'color': '#AAAAAA'
           }
         }
+      }],
+      [{
+        'action': 'prop',
+        'data': {
+          'id': '2',
+          'options': {
+            'color': '#999999'
+          }
+        }
+      }],
+      [{
+        'action': 'prop',
+        'data': {
+          'id': '2',
+          'options': {
+            'color': '#444444'
+          }
+        }
       }]
     ]
   ]
