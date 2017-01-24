@@ -8,7 +8,7 @@ export function create(options) {
   }
 
   return {
-    play : function(story){
+    play: function(story){
       sHandler.story = story;
       sHandler.start();
     },

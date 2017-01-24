@@ -17,7 +17,7 @@ var testData = {
           'id': 2,
           'type': 'factory.square',
           'options': {
-            'squareShape': "$1",
+            'squareShape': '$1',
             'color': '#000000'
           }
         }
@@ -26,9 +26,18 @@ var testData = {
         'action': 'add',
         'data': {
           'parent': '$0',
-          'child': '$1'
+          'child': '$2'
+        }
+      }],
+      [{
+        'action': 'prop',
+        'data': {
+          'id': '2',
+          'options': {
+            'color': '#AAAAAA'
+          }
         }
       }]
     ]
   ]
-}
+};
