@@ -1,0 +1,5 @@
+<div class="horizontalContent">
+  <canvas id="{{canvasId}}" width="{{width}}" height="{{height}}"></canvas>
+  <my-drag-control (onDrag)="resizeCanvasHorizontal($event)" class="horizontalDrag" ></my-drag-control>
+</div>
+<my-drag-control (onDrag)="resizeCanvasVertical($event)" class="verticalDrag" ></my-drag-control>

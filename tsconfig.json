@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "outDir": ".tmp_editor",
+    "rootDir": "editor"
+  },
+  "include" : [
+      "editor/**/*.ts"
+    ],
+    "files": [
+      "./node_modules/@types/node/index.d.ts"
+  ]
+}

@@ -1,0 +1,80 @@
+html, body {
+  font-family: sans-serif;
+}
+
+#myCanvas{
+  border: 1px dashed #AAA;
+  margin-right: 13px;
+}
+
+.showcase-box-inner {
+  border: 1px solid #DDD;
+  border-radius: 3px;
+}
+
+
+.showcase-box{
+}
+
+
+.list-group-example:hover{
+  background-color: #DDD;
+  cursor: pointer;
+}
+
+.dragControl {
+  width: 100%;
+  height: 100%;
+  position: relative;;
+}
+
+.horizontalDrag{
+  display: inline-block;
+  width: 10px;
+  height: 100%;
+  position:absolute;
+  right:0;
+  cursor: ew-resize;
+}
+
+.verticalDrag{
+    display: block;
+    height: 10px;
+    cursor: ns-resize;
+    margin-right: 13px;
+}
+
+.dragPanel{
+  background: #e2e2e2;
+  border: 1px solid #DDD;
+  position: absolute;
+}
+
+.verticalDrag .dragPanel{
+  top: 2px;
+  bottom: 2px;
+  left: 0px;
+  right: 0px;
+}
+
+.horizontalDrag .dragPanel{
+  top: 0px;
+  bottom: 0px;
+  left: 2px;
+  right: 2px;
+}
+
+.horizontalContent{
+  white-space: nowrap;
+  position: relative;
+}
+
+my-runner {
+    display: inline-block;
+    vertical-align: top;
+}
+
+my-resizable-canvas{
+  display: inline-block;
+  padding: 4px;
+}

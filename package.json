@@ -4,12 +4,34 @@
   "description": "A story/timeline module for zanimator animation library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run processStaticFiles && tsc && concurrently \"tsc -w\" \"npm run watchStaticFiles\" \"lite-server\" ",
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "processStaticFiles": "copyfiles -u 1 editor/**/*.html editor/**/*.css .tmp_editor",
+    "watchStaticFiles": "onchange \"editor/**/*.html\" \"editor/**/*.css\" -- npm run processStaticFiles"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
 	   "zAnimator": "file:../zAnimator"
+  },
+  "dependencies": {
+    "@angular/common": "~2.1.1",
+    "@angular/compiler": "~2.1.1",
+    "@angular/core": "~2.1.1",
+    "@angular/forms": "~2.1.1",
+    "@angular/http": "~2.1.1",
+    "@angular/platform-browser": "~2.1.1",
+    "@angular/platform-browser-dynamic": "~2.1.1",
+    "@angular/router": "~3.1.1",
+    "@angular/upgrade": "~2.1.1",
+    "angular-in-memory-web-api": "~0.1.13",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.6.25"
   },
   "devDependencies": {
     "babelify": "^7.3.0",
@@ -31,7 +53,17 @@
     "babel-root-import": "^4.0.1",
     "gulp-r": "^1.1.3",
     "gulp-requirejs": "^0.1.3",
-    "createjs-easeljs": "^0.8.2"
+    "createjs-easeljs": "^0.8.2",
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^6.0.45",
+    "concurrently": "^3.0.0",
+    "copyfiles": "^1.0.0",
+    "fs": "0.0.1-security",
+    "fs-extra": "^1.0.0",
+    "glob": "^7.1.1",
+    "lite-server": "^2.2.2",
+    "onchange": "^3.0.2",
+    "typescript": "^2.0.3"
   },
   "eslintConfig": {
     "fix": true,
