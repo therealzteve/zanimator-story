@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ResizableCanvasComponent } from './resizable-canvas/resizable-canvas.component';
 import { DragControlComponent } from './resizable-canvas/drag-control/drag-control.component';
 import { RunnerComponent } from './runner/runner.component';
+import { EditComponent } from './edit/edit.component';
+import { TimelineComponent } from './edit/timeline/timeline.component';
 
 /* Services */
 import { StoriesService } from './stories/stories.service';
@@ -19,7 +21,9 @@ import { ZAnimatorService } from './zanimator/zanimator.service';
     AppComponent,
     ResizableCanvasComponent,
     DragControlComponent,
-    RunnerComponent
+    RunnerComponent,
+    EditComponent,
+    TimelineComponent
   ],
   bootstrap:    [ AppComponent ],
   providers:    [ StoriesService, ZAnimatorService ],

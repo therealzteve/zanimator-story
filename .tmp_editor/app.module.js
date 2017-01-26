@@ -14,6 +14,8 @@ var app_component_1 = require("./app.component");
 var resizable_canvas_component_1 = require("./resizable-canvas/resizable-canvas.component");
 var drag_control_component_1 = require("./resizable-canvas/drag-control/drag-control.component");
 var runner_component_1 = require("./runner/runner.component");
+var edit_component_1 = require("./edit/edit.component");
+var timeline_component_1 = require("./edit/timeline/timeline.component");
 /* Services */
 var stories_service_1 = require("./stories/stories.service");
 var zanimator_service_1 = require("./zanimator/zanimator.service");
@@ -29,7 +31,9 @@ AppModule = __decorate([
             app_component_1.AppComponent,
             resizable_canvas_component_1.ResizableCanvasComponent,
             drag_control_component_1.DragControlComponent,
-            runner_component_1.RunnerComponent
+            runner_component_1.RunnerComponent,
+            edit_component_1.EditComponent,
+            timeline_component_1.TimelineComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [stories_service_1.StoriesService, zanimator_service_1.ZAnimatorService],
