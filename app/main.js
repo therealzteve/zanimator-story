@@ -9,7 +9,7 @@ export function create(options) {
 
   return {
     play: function(story){
-      sHandler.story = story;
+      sHandler.story = JSON.parse(JSON.stringify(story));
       sHandler.start();
     },
     stop: function(){

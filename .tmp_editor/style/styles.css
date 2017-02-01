@@ -78,3 +78,29 @@ my-resizable-canvas{
   display: inline-block;
   padding: 4px;
 }
+
+.timeslot-timeblock{
+  display: inline-block;
+  border: 1px solid black;
+  margin: 3px;
+  width: 150px;
+  overflow: auto;
+  flex-shrink:0;
+}
+
+my-timeslot {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.command{
+  border-bottom: 1px solid #AAA;
+}
+
+
+.jsonPreview{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -10,6 +10,7 @@ import { DragControlComponent } from './resizable-canvas/drag-control/drag-contr
 import { RunnerComponent } from './runner/runner.component';
 import { EditComponent } from './edit/edit.component';
 import { TimelineComponent } from './edit/timeline/timeline.component';
+import { TimeslotComponent } from './edit/timeline/timeslot.component';
 
 /* Services */
 import { StoriesService } from './stories/stories.service';
@@ -23,7 +24,8 @@ import { ZAnimatorService } from './zanimator/zanimator.service';
     DragControlComponent,
     RunnerComponent,
     EditComponent,
-    TimelineComponent
+    TimelineComponent,
+    TimeslotComponent
   ],
   bootstrap:    [ AppComponent ],
   providers:    [ StoriesService, ZAnimatorService ],

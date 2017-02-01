@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component} from '@angular/core';
+import { StoriesService } from '../stories/stories.service';
 
 @Component({
   selector: 'my-story-edit',
@@ -8,8 +8,11 @@ import { Component } from '@angular/core';
 })
 export class EditComponent {
 
-  constructor(){
+
+  constructor(private storiesService: StoriesService){
 
   }
+
+
 
 }

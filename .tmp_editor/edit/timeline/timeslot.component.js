@@ -9,20 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var stories_service_1 = require("../stories/stories.service");
-var EditComponent = (function () {
-    function EditComponent(storiesService) {
-        this.storiesService = storiesService;
+var TimeslotComponent = (function () {
+    function TimeslotComponent() {
     }
-    return EditComponent;
+    TimeslotComponent.prototype.ngOnInit = function () { };
+    TimeslotComponent.prototype.addBlock = function () {
+        this.timeslot.push([]);
+    };
+    TimeslotComponent.prototype.addCommandToBlock = function (block) {
+        block.push({});
+    };
+    return TimeslotComponent;
 }());
-EditComponent = __decorate([
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], TimeslotComponent.prototype, "timeslot", void 0);
+TimeslotComponent = __decorate([
     core_1.Component({
-        selector: 'my-story-edit',
-        templateUrl: './edit.component.html',
+        selector: 'my-timeslot',
+        templateUrl: 'timeslot.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [stories_service_1.StoriesService])
-], EditComponent);
-exports.EditComponent = EditComponent;
-//# sourceMappingURL=edit.component.js.map
+    __metadata("design:paramtypes", [])
+], TimeslotComponent);
+exports.TimeslotComponent = TimeslotComponent;
+//# sourceMappingURL=timeslot.component.js.map

@@ -12,8 +12,15 @@ var core_1 = require("@angular/core");
 var TimelineComponent = (function () {
     function TimelineComponent() {
     }
+    TimelineComponent.prototype.addTimeslot = function () {
+        this.story.timeSlots.push([]);
+    };
     return TimelineComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], TimelineComponent.prototype, "story", void 0);
 TimelineComponent = __decorate([
     core_1.Component({
         selector: 'my-story-timeline',

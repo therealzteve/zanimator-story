@@ -1,1 +1,10 @@
 <h3>This is the timeline</h3>
+<div *ngIf="story">
+  {{story.title}}
+  <!-- Each timeslot represents an independent slot  widht half of the speed of the slot before
+
+    timeslots -> time-blocks -> commands
+  -->
+  <my-timeslot *ngFor="let timeslot of story.timeSlots" [timeslot]="timeslot"></my-timeslot>
+  <button type="button" (click)="addTimeslot()">+</button>
+</div>
