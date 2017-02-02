@@ -8,11 +8,16 @@ import { StoriesService } from '../stories/stories.service';
 })
 export class EditComponent {
 
+  public exportedStory;
 
   constructor(private storiesService: StoriesService){
 
   }
 
+  public export(){
+    this.exportedStory = JSON.stringify(this.storiesService.currentStory)
+    console.log(this.exportedStory);
+  }
 
 
 }

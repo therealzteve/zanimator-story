@@ -1,2 +1,4 @@
 <h2>Story editieren</h2>
+<button type="button" (click)="export()">Save</button>
 <my-story-timeline [story]="storiesService.currentStory" ></my-story-timeline>
+<pre>{{exportedStory}}</pre>

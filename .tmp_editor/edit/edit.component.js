@@ -14,6 +14,10 @@ var EditComponent = (function () {
     function EditComponent(storiesService) {
         this.storiesService = storiesService;
     }
+    EditComponent.prototype.export = function () {
+        this.exportedStory = JSON.stringify(this.storiesService.currentStory);
+        console.log(this.exportedStory);
+    };
     return EditComponent;
 }());
 EditComponent = __decorate([

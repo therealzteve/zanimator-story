@@ -104,3 +104,8 @@ my-timeslot {
   overflow: hidden;
   white-space: nowrap;
 }
+
+.commandEdit{
+  position: absolute;
+  margin: 5px;
+}

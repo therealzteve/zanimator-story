@@ -11,8 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var CommandEditComponent = (function () {
     function CommandEditComponent() {
+        this.editMode = false;
+        this.editData = '';
     }
     CommandEditComponent.prototype.ngOnInit = function () { };
+    CommandEditComponent.prototype.openEditor = function () {
+        this.editMode = true;
+        this.editData = JSON.stringify(this.command.data);
+    };
+    CommandEditComponent.prototype.saveChanges = function () {
+        this.command.data = JSON.parse(this.editData);
+        this.editMode = false;
+    };
+    CommandEditComponent.prototype.cancelEdit = function () {
+        this.editMode = false;
+    };
     return CommandEditComponent;
 }());
 __decorate([

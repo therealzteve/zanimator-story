@@ -1,4 +1,12 @@
-{{command.action}}
-<div class="jsonPreview">
-  {{command.data | json}}
+<div (click)="openEditor()" >
+  {{command.action}}
+  <div class="jsonPreview">
+    {{command.data | json}}
+  </div>
+</div>
+<div class="commandEdit"  *ngIf="editMode">
+  <textarea [(ngModel)]="editData" >
+  </textarea>
+  <button type="button" (click)="saveChanges()">OK</button>
+  <button type="button" (click)="cancelEdit()">Cancel</button>
 </div>
