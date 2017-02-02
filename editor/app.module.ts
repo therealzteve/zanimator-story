@@ -11,6 +11,7 @@ import { RunnerComponent } from './runner/runner.component';
 import { EditComponent } from './edit/edit.component';
 import { TimelineComponent } from './edit/timeline/timeline.component';
 import { TimeslotComponent } from './edit/timeline/timeslot.component';
+import { CommandEditComponent } from './edit/command/command.component';
 
 /* Services */
 import { StoriesService } from './stories/stories.service';
@@ -25,7 +26,8 @@ import { ZAnimatorService } from './zanimator/zanimator.service';
     RunnerComponent,
     EditComponent,
     TimelineComponent,
-    TimeslotComponent
+    TimeslotComponent,
+    CommandEditComponent
   ],
   bootstrap:    [ AppComponent ],
   providers:    [ StoriesService, ZAnimatorService ],

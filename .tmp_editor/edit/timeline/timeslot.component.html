@@ -1,9 +1,6 @@
 <div *ngFor="let block of timeslot" class="timeslot-timeblock">
   <div class="command" *ngFor="let command of block">
-    {{command.action}}
-    <div class="jsonPreview">
-      {{command.data | json}}
-    </div>
+    <my-command-edit [command]="command"></my-command-edit>
   </div>
   <button type="button" (click)="addCommandToBlock(block)">+</button>
 </div>
