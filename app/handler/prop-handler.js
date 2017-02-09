@@ -9,9 +9,9 @@ export default function(options){
     prepareOptions(data.options);
 
     for(var param in data.options){
-      idPool[data.id][param] = data.options[param];
+      idPool.get(data.id)[param] = data.options[param];
     }
-    idPool[data.id].draw();
+    idPool.get(data.id).draw();
   };
 
   return handler;

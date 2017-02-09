@@ -1,5 +1,6 @@
 import timer from './timer';
 import constructStoryReader from '../story-reader';
+import idPool from '../id-pool';
 
 export default function(options){
   var internalTimer = timer(handler);
@@ -11,14 +12,18 @@ export default function(options){
   storyHandler.story = false;
 
   storyHandler.start = function(){
+      console.log('starting new story');
+      idPool.init(options.zAnimator.mainContainer);
       storyHandler.timePassed = 0;
+      storyHandler.lastFrame = -1;
       storyHandler.play();
   };
 
   storyHandler.stop = function(){
       storyHandler.pause();
       storyHandler.timePassed = 0;
-      console.log('stopped');
+      storyHandler.lastFrame = -1;
+      idPool.clean();
   };
 
   storyHandler.play = function(){
@@ -32,12 +37,6 @@ export default function(options){
   storyHandler.pause = function(){
     internalTimer.stop();
   };
-
-  function handler(time){
-    storyHandler.timePassed += time;
-
-    tellStory();
-  }
 
   function checkIfFinished(){
     for(var i = 0; i < storyHandler.story.timeSlots.length; i++){
@@ -67,6 +66,12 @@ export default function(options){
       storyHandler.stop();
     }
   };
+
+  function handler(time){
+    storyHandler.timePassed += time;
+
+    tellStory();
+  }
 
   return storyHandler;
 }

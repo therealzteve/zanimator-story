@@ -10,7 +10,7 @@ export default function(options){
       path = path[typePart];
     }
     prepareOptions(data.options);
-    idPool[data.id] = path(data.options);
+    idPool.set(data.id, path(data.options));
   };
 
   return handler;

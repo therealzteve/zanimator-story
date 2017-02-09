@@ -32,6 +32,9 @@ var RunnerComponent = (function () {
             _this.storyHandler.play(_this.storiesService.currentStory);
         });
     };
+    RunnerComponent.prototype.play = function () {
+        this.storyHandler.play(this.storiesService.currentStory);
+    };
     return RunnerComponent;
 }());
 RunnerComponent = __decorate([

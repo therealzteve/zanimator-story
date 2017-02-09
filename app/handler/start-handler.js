@@ -4,7 +4,7 @@ export default function(){
   var handler = {};
 
   handler.handle = function(data){
-    idPool[data.id].start();
+    idPool.get(data.id).start();
   };
 
   return handler;

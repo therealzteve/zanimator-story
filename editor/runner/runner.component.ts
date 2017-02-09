@@ -31,4 +31,8 @@ export class RunnerComponent implements OnInit{
     });
   }
 
+  public play(){
+    this.storyHandler.play(this.storiesService.currentStory);
+  }
+
 }

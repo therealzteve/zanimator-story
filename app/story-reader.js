@@ -3,12 +3,9 @@ import addHandler from './handler/add-handler';
 import propHandler from './handler/prop-handler';
 import startHandler from './handler/start-handler';
 import stopHandler from './handler/stop-handler';
-import idPool from './id-pool';
 
 export default function(options){
   var storyReader = {};
-
-  idPool['0'] = options.zAnimator.mainContainer;
 
   storyReader.handlers = {};
   storyReader.handlers.create = createHandler({zAnimator: options.zAnimator});

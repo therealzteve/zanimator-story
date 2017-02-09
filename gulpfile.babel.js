@@ -16,7 +16,6 @@ const $ = gulpLoadPlugins();
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
-  gulp.watch('app/**/*.js', ['build']);
 });
 
 /**

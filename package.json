@@ -8,7 +8,8 @@
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "processStaticFiles": "copyfiles -u 1 editor/**/*.html editor/**/*.css .tmp_editor",
+    "buildLibrary": "gulp default",
+    "processStaticFiles": "copyfiles -u 1 editor/**/*.html editor/**/*.css .tmp_editor && npm run buildLibrary",
     "watchStaticFiles": "onchange \"editor/**/*.html\" \"editor/**/*.css\" -- npm run processStaticFiles"
   },
   "author": "",
