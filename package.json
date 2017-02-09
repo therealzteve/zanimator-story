@@ -4,12 +4,13 @@
   "description": "A story/timeline module for zanimator animation library",
   "main": "index.js",
   "scripts": {
-    "start": "npm run processStaticFiles && tsc && concurrently \"tsc -w\" \"npm run watchStaticFiles\" \"lite-server\" ",
+    "start": "npm run processStaticFiles && tsc && concurrently \"tsc -w\" \"npm run watchStaticFiles\" \"npm run watchLib\" \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "buildLibrary": "gulp default",
-    "processStaticFiles": "copyfiles -u 1 editor/**/*.html editor/**/*.css .tmp_editor && npm run buildLibrary",
+    "processStaticFiles": "copyfiles -u 1 editor/**/*.html editor/**/*.css .tmp_editor",
+    "watchLib" : "onchange \"app/**/*\" -- npm run buildLibrary",
     "watchStaticFiles": "onchange \"editor/**/*.html\" \"editor/**/*.css\" -- npm run processStaticFiles"
   },
   "author": "",

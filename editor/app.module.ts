@@ -12,10 +12,12 @@ import { EditComponent } from './edit/edit.component';
 import { TimelineComponent } from './edit/timeline/timeline.component';
 import { TimeslotComponent } from './edit/timeline/timeslot.component';
 import { CommandEditComponent } from './edit/command/command.component';
+import { FullCommandEditorComponent } from './edit/command/full-comand-editor.component';
 
 /* Services */
 import { StoriesService } from './stories/stories.service';
 import { ZAnimatorService } from './zanimator/zanimator.service';
+import { FullCommandEditorService } from './edit/command/command-edit.service';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule ],
@@ -27,10 +29,11 @@ import { ZAnimatorService } from './zanimator/zanimator.service';
     EditComponent,
     TimelineComponent,
     TimeslotComponent,
-    CommandEditComponent
+    CommandEditComponent,
+    FullCommandEditorComponent
   ],
   bootstrap:    [ AppComponent ],
-  providers:    [ StoriesService, ZAnimatorService ],
+  providers:    [ StoriesService, ZAnimatorService, FullCommandEditorService ],
   entryComponents: [ ]
 })
 export class AppModule { }

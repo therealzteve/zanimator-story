@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {FullCommandEditorService } from './command-edit.service';
 
 @Component({
   selector: 'my-command-edit',
@@ -13,9 +14,13 @@ export class CommandEditComponent implements OnInit {
   public editMode = false;
   public editData = '';
 
-  constructor() {  }
+  constructor(private fullCommandEditorService: FullCommandEditorService) {  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(!this.command.action){
+      this.fullCommandEditorService.editCommand(this.command);
+    }
+  }
 
   public openEditor(){
       this.editMode = true;

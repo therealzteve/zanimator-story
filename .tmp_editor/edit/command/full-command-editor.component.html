@@ -1,0 +1,19 @@
+<div *ngIf="command" class="full-command-editor">
+  <div class="full-command-editor-content">
+
+    <div>
+      <select [(ngModel)]="command.action">
+        <option value="create">create</option>
+        <option value="add">add</option>
+        <option value="remove">remove</option>
+      </select>
+      {{command.action}}
+    </div>
+    <div>
+      <textarea >
+      </textarea>
+      <button type="button" (click)="saveChanges()">OK</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+</div>

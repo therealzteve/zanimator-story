@@ -18,9 +18,11 @@ var edit_component_1 = require("./edit/edit.component");
 var timeline_component_1 = require("./edit/timeline/timeline.component");
 var timeslot_component_1 = require("./edit/timeline/timeslot.component");
 var command_component_1 = require("./edit/command/command.component");
+var full_comand_editor_component_1 = require("./edit/command/full-comand-editor.component");
 /* Services */
 var stories_service_1 = require("./stories/stories.service");
 var zanimator_service_1 = require("./zanimator/zanimator.service");
+var command_edit_service_1 = require("./edit/command/command-edit.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -37,10 +39,11 @@ AppModule = __decorate([
             edit_component_1.EditComponent,
             timeline_component_1.TimelineComponent,
             timeslot_component_1.TimeslotComponent,
-            command_component_1.CommandEditComponent
+            command_component_1.CommandEditComponent,
+            full_comand_editor_component_1.FullCommandEditorComponent
         ],
         bootstrap: [app_component_1.AppComponent],
-        providers: [stories_service_1.StoriesService, zanimator_service_1.ZAnimatorService],
+        providers: [stories_service_1.StoriesService, zanimator_service_1.ZAnimatorService, command_edit_service_1.FullCommandEditorService],
         entryComponents: []
     })
 ], AppModule);

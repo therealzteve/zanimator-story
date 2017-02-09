@@ -9,12 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var command_edit_service_1 = require("./command-edit.service");
 var CommandEditComponent = (function () {
-    function CommandEditComponent() {
+    function CommandEditComponent(fullCommandEditorService) {
+        this.fullCommandEditorService = fullCommandEditorService;
         this.editMode = false;
         this.editData = '';
     }
-    CommandEditComponent.prototype.ngOnInit = function () { };
+    CommandEditComponent.prototype.ngOnInit = function () {
+        if (!this.command.action) {
+            this.fullCommandEditorService.editCommand(this.command);
+        }
+    };
     CommandEditComponent.prototype.openEditor = function () {
         this.editMode = true;
         this.editData = JSON.stringify(this.command.data);
@@ -38,7 +44,7 @@ CommandEditComponent = __decorate([
         templateUrl: './command.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [command_edit_service_1.FullCommandEditorService])
 ], CommandEditComponent);
 exports.CommandEditComponent = CommandEditComponent;
 //# sourceMappingURL=command.component.js.map

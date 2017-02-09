@@ -109,3 +109,25 @@ my-timeslot {
   position: absolute;
   margin: 5px;
 }
+
+my-full-command-edit{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.full-command-editor{
+  position: fixed;
+  top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  background: rgba(0,0,0,0.8);
+}
+
+.full-command-editor-content{
+  position: relative;
+  width: 200px;
+	margin: 10% auto;
+  background: #fff;
+}
