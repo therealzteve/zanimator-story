@@ -10,21 +10,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var command_edit_service_1 = require("./command-edit.service");
+var command_description_service_1 = require("./description/command-description.service");
 var FullCommandEditorComponent = (function () {
-    function FullCommandEditorComponent(fullCommandEditorService) {
+    function FullCommandEditorComponent(fullCommandEditorService, commandDescriptionService) {
         this.fullCommandEditorService = fullCommandEditorService;
+        this.commandDescriptionService = commandDescriptionService;
     }
     FullCommandEditorComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.fullCommandEditorService.onNewCommandToEdit.subscribe(function (command) {
-            _this.command = command;
+            setTimeout(function () { _this.command = command; _this.initEdit(); });
         });
     };
-    FullCommandEditorComponent.prototype.openEditor = function () {
+    FullCommandEditorComponent.prototype.initEdit = function () {
+        this.tempCommand = JSON.parse(JSON.stringify(this.command));
+        if (!this.tempCommand.data) {
+            this.tempCommand.data = {};
+        }
+        this.editData = this.tempCommand.data;
+        for (var _i = 0, _a = this.getProperties(); _i < _a.length; _i++) {
+            var prop = _a[_i];
+            if (prop.type === "json") {
+                this.editData[prop.name] = JSON.stringify(this.editData[prop.name]);
+            }
+        }
     };
     FullCommandEditorComponent.prototype.saveChanges = function () {
+        this.command.action = this.tempCommand.action;
+        for (var _i = 0, _a = this.getProperties(); _i < _a.length; _i++) {
+            var prop = _a[_i];
+            if (prop.type === "json") {
+                this.editData[prop.name] = JSON.parse(this.editData[prop.name]);
+            }
+        }
+        this.command.data = this.editData;
+        this.command = null;
+        this.tempCommand = null;
     };
     FullCommandEditorComponent.prototype.cancelEdit = function () {
+        this.command = null;
+        this.tempCommand = null;
+    };
+    FullCommandEditorComponent.prototype.getProperties = function () {
+        if (this.tempCommand.action) {
+            return this.commandDescriptionService.getDescriptionOf(this.tempCommand.action).properties;
+        }
+        return [];
     };
     return FullCommandEditorComponent;
 }());
@@ -34,7 +65,8 @@ FullCommandEditorComponent = __decorate([
         templateUrl: './full-command-editor.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [command_edit_service_1.FullCommandEditorService])
+    __metadata("design:paramtypes", [command_edit_service_1.FullCommandEditorService,
+        command_description_service_1.CommandDescriptionService])
 ], FullCommandEditorComponent);
 exports.FullCommandEditorComponent = FullCommandEditorComponent;
 //# sourceMappingURL=full-comand-editor.component.js.map

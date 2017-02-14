@@ -18,6 +18,7 @@ import { FullCommandEditorComponent } from './edit/command/full-comand-editor.co
 import { StoriesService } from './stories/stories.service';
 import { ZAnimatorService } from './zanimator/zanimator.service';
 import { FullCommandEditorService } from './edit/command/command-edit.service';
+import { CommandDescriptionService } from './edit/command/description/command-description.service';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule ],
@@ -33,7 +34,7 @@ import { FullCommandEditorService } from './edit/command/command-edit.service';
     FullCommandEditorComponent
   ],
   bootstrap:    [ AppComponent ],
-  providers:    [ StoriesService, ZAnimatorService, FullCommandEditorService ],
+  providers:    [ StoriesService, ZAnimatorService, FullCommandEditorService, CommandDescriptionService ],
   entryComponents: [ ]
 })
 export class AppModule { }

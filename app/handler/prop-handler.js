@@ -11,7 +11,6 @@ export default function(options){
     for(var param in data.options){
       idPool.get(data.id)[param] = data.options[param];
     }
-    idPool.get(data.id).draw();
   };
 
   return handler;

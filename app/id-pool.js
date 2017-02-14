@@ -23,6 +23,14 @@ var idPool = function(){
     pool[id] = value;
   };
 
+  poolObject.update = function(){
+    for(var id in pool){
+      if(pool[id].draw){
+        pool[id].draw();
+      }
+    }
+  };
+
   return poolObject;
 };
 

@@ -25,6 +25,10 @@ var CommandEditComponent = (function () {
         this.editMode = true;
         this.editData = JSON.stringify(this.command.data);
     };
+    CommandEditComponent.prototype.openFullEditor = function () {
+        this.fullCommandEditorService.editCommand(this.command);
+        this.cancelEdit();
+    };
     CommandEditComponent.prototype.saveChanges = function () {
         this.command.data = JSON.parse(this.editData);
         this.editMode = false;

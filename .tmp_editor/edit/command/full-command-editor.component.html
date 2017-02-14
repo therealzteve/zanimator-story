@@ -1,19 +1,20 @@
-<div *ngIf="command" class="full-command-editor">
-  <div class="full-command-editor-content">
-
+<div *ngIf="tempCommand" class="full-command-editor">
+    <h2>Edit command</h2>
     <div>
-      <select [(ngModel)]="command.action">
+      <select [(ngModel)]="tempCommand.action">
         <option value="create">create</option>
         <option value="add">add</option>
         <option value="remove">remove</option>
+        <option value="prop">prop</option>
       </select>
       {{command.action}}
     </div>
     <div>
-      <textarea >
-      </textarea>
+      <div *ngFor="let property of getProperties()">
+        {{property.name}}
+        <input type="text" [(ngModel)]="editData[property.name]" />
+      </div>
       <button type="button" (click)="saveChanges()">OK</button>
       <button type="button" (click)="cancelEdit()">Cancel</button>
     </div>
-  </div>
 </div>

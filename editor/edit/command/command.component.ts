@@ -27,6 +27,11 @@ export class CommandEditComponent implements OnInit {
       this.editData = JSON.stringify(this.command.data);
   }
 
+  public openFullEditor(){
+    this.fullCommandEditorService.editCommand(this.command);
+    this.cancelEdit();
+  }
+
   public saveChanges(){
     this.command.data = JSON.parse(this.editData);
     this.editMode = false;

@@ -1,0 +1,4 @@
+// TODO: Im Command Editor ID als Plichtfeld, Trennung zwischen Optionen und Command spezifischen Eigenschaften
+
+// TODO: Copy Paste Funktion für Commands, Timeslots und Timelines
+// TODO: Timeslots, Timemlines, Commands auswählbar machen

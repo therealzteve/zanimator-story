@@ -61,7 +61,7 @@ export default function(options){
       }
     }
     storyHandler.lastFrame = Math.floor(storyHandler.timePassed / storyHandler.interval);
-
+    idPool.update();
     if(checkIfFinished()){
       storyHandler.stop();
     }

@@ -7,6 +7,7 @@
 <div class="commandEdit"  *ngIf="editMode">
   <textarea [(ngModel)]="editData" >
   </textarea>
+  <button type="button" (click)="openFullEditor()">Full edit</button>
   <button type="button" (click)="saveChanges()">OK</button>
   <button type="button" (click)="cancelEdit()">Cancel</button>
 </div>
