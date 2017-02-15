@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SelectionService } from '../selection/selection.service';
 
 @Component({
   selector: 'my-timeslot',
@@ -9,7 +10,7 @@ export class TimeslotComponent implements OnInit {
   @Input()
   public timeslot;
 
-  constructor() {  }
+  constructor(private selectionService: SelectionService) {  }
 
 
   ngOnInit() {}
@@ -22,7 +23,15 @@ export class TimeslotComponent implements OnInit {
     block.push({});
   }
 
-  public log(msg){
-    console.log(msg);
+  public selectBlock(block){
+    this.selectionService.setSelectedBlock(block);
+  }
+
+  public selectCommand(command){
+    this.selectionService.setSelectedCommand(command);
+  }
+
+  public isSelectedSlot(){
+    return (this.selectionService.selectedSlot === this.timeslot);
   }
 }

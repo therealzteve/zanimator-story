@@ -19,6 +19,7 @@ import { StoriesService } from './stories/stories.service';
 import { ZAnimatorService } from './zanimator/zanimator.service';
 import { FullCommandEditorService } from './edit/command/command-edit.service';
 import { CommandDescriptionService } from './edit/command/description/command-description.service';
+import { SelectionService } from './edit/selection/selection.service';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule ],
@@ -34,7 +35,13 @@ import { CommandDescriptionService } from './edit/command/description/command-de
     FullCommandEditorComponent
   ],
   bootstrap:    [ AppComponent ],
-  providers:    [ StoriesService, ZAnimatorService, FullCommandEditorService, CommandDescriptionService ],
+  providers:    [
+    StoriesService,
+    ZAnimatorService,
+    FullCommandEditorService,
+    CommandDescriptionService,
+    SelectionService
+   ],
   entryComponents: [ ]
 })
 export class AppModule { }

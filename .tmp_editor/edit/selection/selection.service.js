@@ -14,10 +14,10 @@ var SelectionService = (function () {
     }
     SelectionService.prototype.setSelectedSlot = function (slot) {
         this.getTemporarySelected().slot = slot;
+        this.updateSelected();
     };
     SelectionService.prototype.setSelectedBlock = function (block) {
         this.getTemporarySelected().block = block;
-        this.updateSelected();
     };
     SelectionService.prototype.setSelectedCommand = function (command) {
         this.getTemporarySelected().command = command;

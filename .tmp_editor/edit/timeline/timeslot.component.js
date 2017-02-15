@@ -9,8 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var selection_service_1 = require("../selection/selection.service");
 var TimeslotComponent = (function () {
-    function TimeslotComponent() {
+    function TimeslotComponent(selectionService) {
+        this.selectionService = selectionService;
     }
     TimeslotComponent.prototype.ngOnInit = function () { };
     TimeslotComponent.prototype.addBlock = function () {
@@ -19,8 +21,14 @@ var TimeslotComponent = (function () {
     TimeslotComponent.prototype.addCommandToBlock = function (block) {
         block.push({});
     };
-    TimeslotComponent.prototype.log = function (msg) {
-        console.log(msg);
+    TimeslotComponent.prototype.selectBlock = function (block) {
+        this.selectionService.setSelectedBlock(block);
+    };
+    TimeslotComponent.prototype.selectCommand = function (command) {
+        this.selectionService.setSelectedCommand(command);
+    };
+    TimeslotComponent.prototype.isSelectedSlot = function () {
+        return (this.selectionService.selectedSlot === this.timeslot);
     };
     return TimeslotComponent;
 }());
@@ -34,7 +42,7 @@ TimeslotComponent = __decorate([
         templateUrl: 'timeslot.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [selection_service_1.SelectionService])
 ], TimeslotComponent);
 exports.TimeslotComponent = TimeslotComponent;
 //# sourceMappingURL=timeslot.component.js.map

@@ -24,6 +24,7 @@ var stories_service_1 = require("./stories/stories.service");
 var zanimator_service_1 = require("./zanimator/zanimator.service");
 var command_edit_service_1 = require("./edit/command/command-edit.service");
 var command_description_service_1 = require("./edit/command/description/command-description.service");
+var selection_service_1 = require("./edit/selection/selection.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -44,7 +45,13 @@ AppModule = __decorate([
             full_comand_editor_component_1.FullCommandEditorComponent
         ],
         bootstrap: [app_component_1.AppComponent],
-        providers: [stories_service_1.StoriesService, zanimator_service_1.ZAnimatorService, command_edit_service_1.FullCommandEditorService, command_description_service_1.CommandDescriptionService],
+        providers: [
+            stories_service_1.StoriesService,
+            zanimator_service_1.ZAnimatorService,
+            command_edit_service_1.FullCommandEditorService,
+            command_description_service_1.CommandDescriptionService,
+            selection_service_1.SelectionService
+        ],
         entryComponents: []
     })
 ], AppModule);

@@ -9,14 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var selection_service_1 = require("../selection/selection.service");
 var TimelineComponent = (function () {
-    function TimelineComponent() {
+    function TimelineComponent(selectionService) {
+        this.selectionService = selectionService;
     }
     TimelineComponent.prototype.addTimeslot = function () {
         this.story.timeSlots.push([]);
     };
-    TimelineComponent.prototype.log = function (msg) {
-        console.log(msg);
+    TimelineComponent.prototype.selectSlot = function (slot) {
+        this.selectionService.setSelectedSlot(slot);
     };
     return TimelineComponent;
 }());
@@ -30,7 +32,7 @@ TimelineComponent = __decorate([
         templateUrl: './timeline.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [selection_service_1.SelectionService])
 ], TimelineComponent);
 exports.TimelineComponent = TimelineComponent;
 //# sourceMappingURL=timeline.component.js.map

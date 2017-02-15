@@ -13,11 +13,11 @@ export class SelectionService {
 
   public setSelectedSlot(slot){
     this.getTemporarySelected().slot = slot;
+    this.updateSelected();
   }
 
   public setSelectedBlock(block){
     this.getTemporarySelected().block = block;
-    this.updateSelected();
   }
 
   public setSelectedCommand(command){
