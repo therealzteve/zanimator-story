@@ -21,4 +21,8 @@ export class TimeslotComponent implements OnInit {
   public addCommandToBlock(block){
     block.push({});
   }
+
+  public log(msg){
+    console.log(msg);
+  }
 }

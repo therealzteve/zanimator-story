@@ -19,6 +19,9 @@ var TimeslotComponent = (function () {
     TimeslotComponent.prototype.addCommandToBlock = function (block) {
         block.push({});
     };
+    TimeslotComponent.prototype.log = function (msg) {
+        console.log(msg);
+    };
     return TimeslotComponent;
 }());
 __decorate([

@@ -15,6 +15,9 @@ var TimelineComponent = (function () {
     TimelineComponent.prototype.addTimeslot = function () {
         this.story.timeSlots.push([]);
     };
+    TimelineComponent.prototype.log = function (msg) {
+        console.log(msg);
+    };
     return TimelineComponent;
 }());
 __decorate([

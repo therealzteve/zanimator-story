@@ -5,6 +5,6 @@
 
     timeslots -> time-blocks -> commands
   -->
-  <my-timeslot *ngFor="let timeslot of story.timeSlots" [timeslot]="timeslot"></my-timeslot>
+  <my-timeslot (click)="log('timeslot')" *ngFor="let timeslot of story.timeSlots" [timeslot]="timeslot"></my-timeslot>
   <button type="button" (click)="addTimeslot()">+</button>
 </div>

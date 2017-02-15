@@ -19,4 +19,8 @@ export class TimelineComponent {
     this.story.timeSlots.push([]);
   }
 
+  public log(msg){
+    console.log(msg);
+  }
+
 }

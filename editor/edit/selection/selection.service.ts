@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class SelectionService {
 
   public selectedSlot;
-  public selectedLine;
+  public selectedBlock;
   public selectedCommand;
 
   private temporarySelected;
@@ -15,8 +15,8 @@ export class SelectionService {
     this.getTemporarySelected().slot = slot;
   }
 
-  public setSelectedLine(line){
-    this.getTemporarySelected().line = line;
+  public setSelectedBlock(block){
+    this.getTemporarySelected().block = block;
     this.updateSelected();
   }
 
@@ -33,7 +33,7 @@ export class SelectionService {
 
   private updateSelected(){
     this.selectedSlot = this.getTemporarySelected().slot;
-    this.selectedLine = this.getTemporarySelected().line;
+    this.selectedBlock = this.getTemporarySelected().block;
     this.selectedCommand = this.getTemporarySelected().command;
     this.temporarySelected = null;
   }

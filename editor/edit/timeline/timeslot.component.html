@@ -1,6 +1,6 @@
-<div *ngFor="let block of timeslot" class="timeslot-timeblock">
+<div (click)="log('timeblock')" *ngFor="let block of timeslot" class="timeslot-timeblock">
   <div class="command" *ngFor="let command of block">
-    <my-command-edit [command]="command"></my-command-edit>
+    <my-command-edit (click)="log('command')" [command]="command"></my-command-edit>
   </div>
   <button type="button" (click)="addCommandToBlock(block)">+</button>
 </div>

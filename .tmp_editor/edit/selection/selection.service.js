@@ -15,8 +15,8 @@ var SelectionService = (function () {
     SelectionService.prototype.setSelectedSlot = function (slot) {
         this.getTemporarySelected().slot = slot;
     };
-    SelectionService.prototype.setSelectedLine = function (line) {
-        this.getTemporarySelected().line = line;
+    SelectionService.prototype.setSelectedBlock = function (block) {
+        this.getTemporarySelected().block = block;
         this.updateSelected();
     };
     SelectionService.prototype.setSelectedCommand = function (command) {
@@ -30,7 +30,7 @@ var SelectionService = (function () {
     };
     SelectionService.prototype.updateSelected = function () {
         this.selectedSlot = this.getTemporarySelected().slot;
-        this.selectedLine = this.getTemporarySelected().line;
+        this.selectedBlock = this.getTemporarySelected().block;
         this.selectedCommand = this.getTemporarySelected().command;
         this.temporarySelected = null;
     };
