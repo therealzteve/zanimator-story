@@ -86,9 +86,14 @@ my-resizable-canvas{
   width: 150px;
   overflow: auto;
   flex-shrink:0;
+  background-color: #FFF;
 }
 
-my-timeslot {
+.timeslot-timeblock:hover{
+  background-color: rgba(0,0,0,0.04);
+}
+
+my-timeslot > div {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -96,6 +101,7 @@ my-timeslot {
 
 .command{
   border-bottom: 1px solid #AAA;
+  background-color: #FFF;
 }
 
 
@@ -111,12 +117,6 @@ my-timeslot {
 }
 
 
-
-.full-command-editor{
-
-}
-
-
 .right-side-container{
   display: inline-block;
   vertical-align: top;
@@ -124,13 +124,28 @@ my-timeslot {
 
 my-command-edit{
   cursor: pointer;
-}
-
-my-command-edit:hover{
-  background-color: rgba(0,0,0,0.2);
   display: block;
 }
 
+my-command-edit:hover{
+  background-color: rgba(0,0,0,0.04);
+  display: block;
+}
+
+my-timeslot  > div:hover{
+  background-color: rgba(0,0,0,0.04);
+}
+
 .selected-slot{
-  background-color: rgba(0,0,0,0.25);
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFUlEQVQImWNgQAL/7/3/TyqHgYEBAAx4D215rTbKAAAAAElFTkSuQmCC) repeat;
+  border: 1px solid #999;
+}
+
+.selected-block{
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFUlEQVQImWNgQAL/7/3/TyqHgYEBAAx4D215rTbKAAAAAElFTkSuQmCC) repeat;
+  border: 1px solid #999;
+}
+.selected-command{
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFUlEQVQImWNgQAL/7/3/TyqHgYEBAAx4D215rTbKAAAAAElFTkSuQmCC) repeat;
+  border: 1px solid #999;
 }

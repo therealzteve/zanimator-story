@@ -28,7 +28,16 @@ var TimeslotComponent = (function () {
         this.selectionService.setSelectedCommand(command);
     };
     TimeslotComponent.prototype.isSelectedSlot = function () {
-        return (this.selectionService.selectedSlot === this.timeslot);
+        return (this.selectionService.selectedSlot === this.timeslot
+            && !this.selectionService.selectedBlock
+            && !this.selectionService.selectedCommand);
+    };
+    TimeslotComponent.prototype.isSelectedBlock = function (block) {
+        return (this.selectionService.selectedBlock === block
+            && !this.selectionService.selectedCommand);
+    };
+    TimeslotComponent.prototype.isSelectedCommand = function (command) {
+        return (this.selectionService.selectedCommand === command);
     };
     return TimeslotComponent;
 }());

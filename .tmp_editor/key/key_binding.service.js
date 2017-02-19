@@ -9,20 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var key_binding_service_1 = require("./key/key_binding.service");
-var AppComponent = (function () {
-    function AppComponent(KeyBindingService) {
-        this.KeyBindingService = KeyBindingService;
+var angular2_hotkeys_1 = require("angular2-hotkeys");
+var KeyBindingService = (function () {
+    function KeyBindingService(hotkeysService) {
+        this.hotkeysService = hotkeysService;
+        this.hotkeysService.add(new angular2_hotkeys_1.Hotkey('strg+c', function (event) {
+            console.log('Typed hotkey');
+            return false; // Prevent bubbling
+        }));
     }
-    return AppComponent;
+    return KeyBindingService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: './app.component.html',
-        moduleId: module.id
-    }),
-    __metadata("design:paramtypes", [key_binding_service_1.KeyBindingService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+KeyBindingService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [angular2_hotkeys_1.HotkeysService])
+], KeyBindingService);
+exports.KeyBindingService = KeyBindingService;
+//# sourceMappingURL=key_binding.service.js.map

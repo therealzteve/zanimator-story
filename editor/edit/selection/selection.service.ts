@@ -24,6 +24,10 @@ export class SelectionService {
     this.getTemporarySelected().command = command;
   }
 
+  public deselect(){
+    this.updateSelected();
+  }
+
   private getTemporarySelected(){
     if(!this.temporarySelected){
       this.temporarySelected = {};

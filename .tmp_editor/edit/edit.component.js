@@ -10,13 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var stories_service_1 = require("../stories/stories.service");
+var selection_service_1 = require("./selection/selection.service");
 var EditComponent = (function () {
-    function EditComponent(storiesService) {
+    function EditComponent(storiesService, selectionService) {
         this.storiesService = storiesService;
+        this.selectionService = selectionService;
     }
     EditComponent.prototype.export = function () {
         this.exportedStory = JSON.stringify(this.storiesService.currentStory);
         console.log(this.exportedStory);
+    };
+    EditComponent.prototype.deselect = function () {
+        this.selectionService.deselect();
     };
     return EditComponent;
 }());
@@ -26,7 +31,7 @@ EditComponent = __decorate([
         templateUrl: './edit.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [stories_service_1.StoriesService])
+    __metadata("design:paramtypes", [stories_service_1.StoriesService, selection_service_1.SelectionService])
 ], EditComponent);
 exports.EditComponent = EditComponent;
 //# sourceMappingURL=edit.component.js.map

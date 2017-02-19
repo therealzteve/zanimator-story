@@ -32,6 +32,19 @@ export class TimeslotComponent implements OnInit {
   }
 
   public isSelectedSlot(){
-    return (this.selectionService.selectedSlot === this.timeslot);
+    return (this.selectionService.selectedSlot === this.timeslot
+      && !this.selectionService.selectedBlock
+      && !this.selectionService.selectedCommand
+    );
+  }
+
+  public isSelectedBlock(block){
+    return ( this.selectionService.selectedBlock === block
+      && !this.selectionService.selectedCommand
+    );
+  }
+
+  public isSelectedCommand(command){
+    return ( this.selectionService.selectedCommand === command );
   }
 }

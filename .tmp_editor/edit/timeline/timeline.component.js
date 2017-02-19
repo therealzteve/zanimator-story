@@ -17,8 +17,9 @@ var TimelineComponent = (function () {
     TimelineComponent.prototype.addTimeslot = function () {
         this.story.timeSlots.push([]);
     };
-    TimelineComponent.prototype.selectSlot = function (slot) {
+    TimelineComponent.prototype.selectSlot = function (slot, event) {
         this.selectionService.setSelectedSlot(slot);
+        event.stopPropagation();
     };
     return TimelineComponent;
 }());

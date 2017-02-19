@@ -18,8 +18,9 @@ export class TimelineComponent {
     this.story.timeSlots.push([]);
   }
 
-  public selectSlot(slot){
+  public selectSlot(slot, event){
     this.selectionService.setSelectedSlot(slot);
+    event.stopPropagation();
   }
 
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { KeyBindingService } from './key/key_binding.service';
 declare var zAnimator: any;
 
 
@@ -10,8 +11,9 @@ declare var zAnimator: any;
 export class AppComponent {
   private zAnimator;
 
-  constructor(){
+  constructor(private KeyBindingService: KeyBindingService){
 
   }
+
 
 }

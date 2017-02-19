@@ -9,6 +9,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
+var angular2_hotkeys_1 = require("angular2-hotkeys");
 /* Components */
 var app_component_1 = require("./app.component");
 var resizable_canvas_component_1 = require("./resizable-canvas/resizable-canvas.component");
@@ -25,6 +26,8 @@ var zanimator_service_1 = require("./zanimator/zanimator.service");
 var command_edit_service_1 = require("./edit/command/command-edit.service");
 var command_description_service_1 = require("./edit/command/description/command-description.service");
 var selection_service_1 = require("./edit/selection/selection.service");
+var key_binding_service_1 = require("./key/key_binding.service");
+var angular2_hotkeys_2 = require("angular2-hotkeys");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -32,7 +35,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, angular2_hotkeys_1.HotkeyModule.forRoot()],
         declarations: [
             app_component_1.AppComponent,
             resizable_canvas_component_1.ResizableCanvasComponent,
@@ -50,7 +53,9 @@ AppModule = __decorate([
             zanimator_service_1.ZAnimatorService,
             command_edit_service_1.FullCommandEditorService,
             command_description_service_1.CommandDescriptionService,
-            selection_service_1.SelectionService
+            selection_service_1.SelectionService,
+            angular2_hotkeys_2.HotkeysService,
+            key_binding_service_1.KeyBindingService
         ],
         entryComponents: []
     })

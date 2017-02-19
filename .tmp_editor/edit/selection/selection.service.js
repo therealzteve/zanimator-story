@@ -22,6 +22,9 @@ var SelectionService = (function () {
     SelectionService.prototype.setSelectedCommand = function (command) {
         this.getTemporarySelected().command = command;
     };
+    SelectionService.prototype.deselect = function () {
+        this.updateSelected();
+    };
     SelectionService.prototype.getTemporarySelected = function () {
         if (!this.temporarySelected) {
             this.temporarySelected = {};
