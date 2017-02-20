@@ -2,7 +2,6 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
-import { HotkeyModule } from 'angular2-hotkeys';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -21,11 +20,11 @@ import { ZAnimatorService } from './zanimator/zanimator.service';
 import { FullCommandEditorService } from './edit/command/command-edit.service';
 import { CommandDescriptionService } from './edit/command/description/command-description.service';
 import { SelectionService } from './edit/selection/selection.service';
+import { ClipboardService } from './edit/clipboard/clipboard.service';
 import { KeyBindingService } from './key/key_binding.service';
-import { HotkeysService } from 'angular2-hotkeys';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, FormsModule, HotkeyModule.forRoot() ],
+  imports:      [ BrowserModule, HttpModule, FormsModule],
   declarations: [
     AppComponent,
     ResizableCanvasComponent,
@@ -44,8 +43,8 @@ import { HotkeysService } from 'angular2-hotkeys';
     FullCommandEditorService,
     CommandDescriptionService,
     SelectionService,
-    HotkeysService,
-    KeyBindingService
+    KeyBindingService,
+    ClipboardService
    ],
   entryComponents: [ ]
 })

@@ -41,16 +41,18 @@ export class ClipboardService {
 
     var cmdIndex = selBlock.indexOf(selCmd);
     if(cmdIndex === -1){
-      selBlock.push(JSON.parse(JSON.stringify(selCmd)));
+      selBlock.push(JSON.parse(JSON.stringify(this.storedCommand)));
     }else{
-      selBlock.splice(selBlock, 0, JSON.parse(JSON.stringify(selCmd)));
+      selBlock.splice(selBlock, 0, JSON.parse(JSON.stringify(this.storedCommand)));
     }
   }
 
+  // TODO Implement block paste
   private handleBlockPaste(){
 
   }
 
+  // TODO Implement slot paste
   private handleSlotPaste(){
 
   }

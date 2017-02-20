@@ -9,7 +9,8 @@
     "removeComments": false,
     "noImplicitAny": false,
     "outDir": "../.tmp_editor",
-    "rootDir": "editor"
+    "rootDir": "editor",
+    "allowJs": true
   },
   "include" : [
       "editor/**/*.ts"

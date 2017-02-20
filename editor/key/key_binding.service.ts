@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HotkeysService, Hotkey } from 'angular2-hotkeys';
+import { ClipboardService } from '../edit/clipboard/clipboard.service';
 
 @Injectable()
 export class KeyBindingService {
-  constructor(private hotkeysService: HotkeysService) {
-    this.hotkeysService.add(new Hotkey('strg+c', (event: KeyboardEvent): boolean => {
-        console.log('Typed hotkey');
-        return false; // Prevent bubbling
-    }));
+  constructor(private clipboardService: ClipboardService) {
+    var Mousetrap = require('/node_modules/mousetrap/mousetrap.js');
+    Mousetrap.bind('ctrl+c', function(e) {
+      console.log('copy');
+      clipboardService.copy();
+      return false;
+    });
+
+    Mousetrap.bind('ctrl+v', function(e) {
+      console.log('paste');
+      clipboardService.paste();
+      return false;
+    });
 
   }
 
