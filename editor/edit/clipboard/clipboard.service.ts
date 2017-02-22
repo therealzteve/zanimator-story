@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SelectionService } from '../selection/selection.service';
 import { StoriesService } from '../../stories/stories.service';
 
+
 @Injectable()
 export class ClipboardService {
 
@@ -43,17 +44,34 @@ export class ClipboardService {
     if(cmdIndex === -1){
       selBlock.push(JSON.parse(JSON.stringify(this.storedCommand)));
     }else{
-      selBlock.splice(selBlock, 0, JSON.parse(JSON.stringify(this.storedCommand)));
+      selBlock.splice(cmdIndex, 0, JSON.parse(JSON.stringify(this.storedCommand)));
     }
   }
 
-  // TODO Implement block paste
   private handleBlockPaste(){
+    var selSlot = this.selectionService.selectedSlot;
+    var selBlock = this.selectionService.selectedBlock;
 
+    if(!selSlot){
+      return;
+    }
+
+    var blockIndex = selSlot.indexOf(selBlock);
+    if(blockIndex === -1){
+      selSlot.push(JSON.parse(JSON.stringify(this.storedBlock)));
+    }else{
+      selSlot.splice(blockIndex, 0, JSON.parse(JSON.stringify(this.storedBlock)));
+    }
   }
 
-  // TODO Implement slot paste
   private handleSlotPaste(){
+    var selSlot = this.selectionService.selectedSlot;
 
+    var slotIndex =  this.storiesService.currentStory.timeSlots.indexOf(slotIndex);
+    if(slotIndex === -1){
+       this.storiesService.currentStory.timeSlots.push(JSON.parse(JSON.stringify(this.storedSlot)));
+    }else{
+      this.storiesService.currentStory.timeSlots.splice(slotIndex, 0, JSON.parse(JSON.stringify(this.storedSlot)));
+    }
   }
 }

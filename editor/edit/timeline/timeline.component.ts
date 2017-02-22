@@ -23,4 +23,11 @@ export class TimelineComponent {
     event.stopPropagation();
   }
 
+  public deleteSlot(slot){
+    var index = this.story.timeSlots.indexOf(slot);
+    if(index > -1){
+      this.story.timeSlots.splice(index, 1);
+    }
+  }
+
 }

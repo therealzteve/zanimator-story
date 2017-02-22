@@ -1,6 +1,9 @@
 <div (click)="deselect()">
   <h2>Story editieren</h2>
   <button type="button" (click)="export()">Save</button>
+  <p *ngIf="storiesService.currentStory">
+    <label>Interval: </label> <input type="text" [(ngModel)]="storiesService.currentStory.interval" />
+  </p>
   <my-story-timeline [story]="storiesService.currentStory" ></my-story-timeline>
   <pre>{{exportedStory}}</pre>
 </div>

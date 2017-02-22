@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectionService } from '../selection/selection.service';
 
 @Component({
@@ -7,8 +7,12 @@ import { SelectionService } from '../selection/selection.service';
   moduleId: module.id
 })
 export class TimeslotComponent implements OnInit {
+
   @Input()
   public timeslot;
+
+  @Output()
+  public onDeleteSlot = new EventEmitter();
 
   constructor(private selectionService: SelectionService) {  }
 
@@ -47,4 +51,23 @@ export class TimeslotComponent implements OnInit {
   public isSelectedCommand(command){
     return ( this.selectionService.selectedCommand === command );
   }
+
+  public deleteCommand(block, command){
+      var index = block.indexOf(command);
+      if(index > -1){
+        block.splice(index, 1);
+      }
+  }
+
+  public deleteBlock(block){
+    var index = this.timeslot.indexOf(block);
+    if(index > -1){
+      this.timeslot.splice(index, 1);
+    }
+  }
+
+  public deleteSlot(){
+    this.onDeleteSlot.emit();
+  }
+
 }

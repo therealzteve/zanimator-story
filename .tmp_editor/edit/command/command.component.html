@@ -1,4 +1,5 @@
-<div (dblclick)="openEditor()" >
+<div (mouseenter)="showDeleteButton()" (mouseleave)="hideDeleteButton()" (dblclick)="openEditor()" >
+  <button class="command-delete-button" *ngIf="deleteButtonVisible" (click)="removeCommand()">-</button>
   {{command.action}}
   <div class="jsonPreview">
     {{command.data | json}}

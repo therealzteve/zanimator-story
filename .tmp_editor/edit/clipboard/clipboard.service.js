@@ -43,14 +43,32 @@ var ClipboardService = (function () {
             selBlock.push(JSON.parse(JSON.stringify(this.storedCommand)));
         }
         else {
-            selBlock.splice(selBlock, 0, JSON.parse(JSON.stringify(this.storedCommand)));
+            selBlock.splice(cmdIndex, 0, JSON.parse(JSON.stringify(this.storedCommand)));
         }
     };
-    // TODO Implement block paste
     ClipboardService.prototype.handleBlockPaste = function () {
+        var selSlot = this.selectionService.selectedSlot;
+        var selBlock = this.selectionService.selectedBlock;
+        if (!selSlot) {
+            return;
+        }
+        var blockIndex = selSlot.indexOf(selBlock);
+        if (blockIndex === -1) {
+            selSlot.push(JSON.parse(JSON.stringify(this.storedBlock)));
+        }
+        else {
+            selSlot.splice(blockIndex, 0, JSON.parse(JSON.stringify(this.storedBlock)));
+        }
     };
-    // TODO Implement slot paste
     ClipboardService.prototype.handleSlotPaste = function () {
+        var selSlot = this.selectionService.selectedSlot;
+        var slotIndex = this.storiesService.currentStory.timeSlots.indexOf(slotIndex);
+        if (slotIndex === -1) {
+            this.storiesService.currentStory.timeSlots.push(JSON.parse(JSON.stringify(this.storedSlot)));
+        }
+        else {
+            this.storiesService.currentStory.timeSlots.splice(slotIndex, 0, JSON.parse(JSON.stringify(this.storedSlot)));
+        }
     };
     return ClipboardService;
 }());

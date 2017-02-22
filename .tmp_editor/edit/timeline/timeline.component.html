@@ -5,6 +5,6 @@
 
     timeslots -> time-blocks -> commands
   -->
-  <my-timeslot (click)="selectSlot(timeslot, $event)" *ngFor="let timeslot of story.timeSlots" [timeslot]="timeslot"></my-timeslot>
+  <my-timeslot (onDeleteSlot)="deleteSlot(timeslot)" (click)="selectSlot(timeslot, $event)" *ngFor="let timeslot of story.timeSlots" [timeslot]="timeslot"></my-timeslot>
   <button type="button" (click)="addTimeslot()">+</button>
 </div>

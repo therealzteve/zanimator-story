@@ -1,1 +1,1 @@
-// TODO: Im Command Editor ID als Plichtfeld, Trennung zwischen Optionen und Command spezifischen Eigenschaften
+// TODO: Remove Funktionen einbauen

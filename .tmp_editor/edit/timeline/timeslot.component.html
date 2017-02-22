@@ -1,7 +1,13 @@
 <div [ngClass]="{'selected-slot': isSelectedSlot()}">
+  <div class="timeslot-toolbar">
+    <button class="timeslot-delete-button" (click)="deleteSlot()">-</button>
+  </div>
   <div (click)="selectBlock(block)" [ngClass]="{'selected-block': isSelectedBlock(block)}"  *ngFor="let block of timeslot" class="timeslot-timeblock">
+    <div class="block-toolbar">
+      <button class="block-delete-button" (click)="deleteBlock(block)">-</button>
+    </div>
     <div class="command" *ngFor="let command of block">
-      <my-command-edit [ngClass]="{'selected-command': isSelectedCommand(command)}" (click)="selectCommand(command)" [command]="command"></my-command-edit>
+      <my-command-edit (commandDeleted)="deleteCommand(block, command)" [ngClass]="{'selected-command': isSelectedCommand(command)}" (click)="selectCommand(command)" [command]="command"></my-command-edit>
     </div>
     <button type="button" (click)="addCommandToBlock(block)">+</button>
   </div>

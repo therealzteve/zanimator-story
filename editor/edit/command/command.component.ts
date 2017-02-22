@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import {FullCommandEditorService } from './command-edit.service';
 
 @Component({
@@ -11,8 +11,12 @@ export class CommandEditComponent implements OnInit {
   @Input()
   public command;
 
+  @Output()
+  commandDeleted = new EventEmitter();
+
   public editMode = false;
   public editData = '';
+  public deleteButtonVisible = false;
 
   constructor(private fullCommandEditorService: FullCommandEditorService) {  }
 
@@ -39,5 +43,17 @@ export class CommandEditComponent implements OnInit {
 
   public cancelEdit(){
     this.editMode = false;
+  }
+
+  public removeCommand(){
+    this.commandDeleted.emit();
+  }
+
+  public showDeleteButton(){
+    this.deleteButtonVisible = true;
+  }
+
+  public hideDeleteButton(){
+    this.deleteButtonVisible = false;
   }
 }

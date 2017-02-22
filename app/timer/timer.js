@@ -1,7 +1,7 @@
 export default function(callback){
   var timer = {};
 
-  timer.start =  function(){
+  timer.start = function(){
       createjs.Ticker.addEventListener('tick', timer.handle);
   };
 

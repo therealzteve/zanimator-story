@@ -13,6 +13,7 @@ var selection_service_1 = require("../selection/selection.service");
 var TimeslotComponent = (function () {
     function TimeslotComponent(selectionService) {
         this.selectionService = selectionService;
+        this.onDeleteSlot = new core_1.EventEmitter();
     }
     TimeslotComponent.prototype.ngOnInit = function () { };
     TimeslotComponent.prototype.addBlock = function () {
@@ -39,12 +40,31 @@ var TimeslotComponent = (function () {
     TimeslotComponent.prototype.isSelectedCommand = function (command) {
         return (this.selectionService.selectedCommand === command);
     };
+    TimeslotComponent.prototype.deleteCommand = function (block, command) {
+        var index = block.indexOf(command);
+        if (index > -1) {
+            block.splice(index, 1);
+        }
+    };
+    TimeslotComponent.prototype.deleteBlock = function (block) {
+        var index = this.timeslot.indexOf(block);
+        if (index > -1) {
+            this.timeslot.splice(index, 1);
+        }
+    };
+    TimeslotComponent.prototype.deleteSlot = function () {
+        this.onDeleteSlot.emit();
+    };
     return TimeslotComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
 ], TimeslotComponent.prototype, "timeslot", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], TimeslotComponent.prototype, "onDeleteSlot", void 0);
 TimeslotComponent = __decorate([
     core_1.Component({
         selector: 'my-timeslot',

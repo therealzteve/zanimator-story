@@ -21,6 +21,12 @@ var TimelineComponent = (function () {
         this.selectionService.setSelectedSlot(slot);
         event.stopPropagation();
     };
+    TimelineComponent.prototype.deleteSlot = function (slot) {
+        var index = this.story.timeSlots.indexOf(slot);
+        if (index > -1) {
+            this.story.timeSlots.splice(index, 1);
+        }
+    };
     return TimelineComponent;
 }());
 __decorate([

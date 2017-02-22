@@ -28,6 +28,9 @@ export default function(options){
 
   storyHandler.play = function(){
     if(storyHandler.story){
+      if(storyHandler.story.interval){
+        storyHandler.interval = storyHandler.story.interval;
+      }
       internalTimer.start();
     }else{
       console.warn('No story was set before. Aborting play.');

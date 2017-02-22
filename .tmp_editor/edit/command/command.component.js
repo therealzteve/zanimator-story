@@ -13,8 +13,10 @@ var command_edit_service_1 = require("./command-edit.service");
 var CommandEditComponent = (function () {
     function CommandEditComponent(fullCommandEditorService) {
         this.fullCommandEditorService = fullCommandEditorService;
+        this.commandDeleted = new core_1.EventEmitter();
         this.editMode = false;
         this.editData = '';
+        this.deleteButtonVisible = false;
     }
     CommandEditComponent.prototype.ngOnInit = function () {
         if (!this.command.action) {
@@ -36,12 +38,25 @@ var CommandEditComponent = (function () {
     CommandEditComponent.prototype.cancelEdit = function () {
         this.editMode = false;
     };
+    CommandEditComponent.prototype.removeCommand = function () {
+        this.commandDeleted.emit();
+    };
+    CommandEditComponent.prototype.showDeleteButton = function () {
+        this.deleteButtonVisible = true;
+    };
+    CommandEditComponent.prototype.hideDeleteButton = function () {
+        this.deleteButtonVisible = false;
+    };
     return CommandEditComponent;
 }());
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
 ], CommandEditComponent.prototype, "command", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], CommandEditComponent.prototype, "commandDeleted", void 0);
 CommandEditComponent = __decorate([
     core_1.Component({
         selector: 'my-command-edit',
