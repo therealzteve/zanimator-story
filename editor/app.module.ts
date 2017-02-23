@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
+import { DragulaModule } from 'ng2-dragula';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -22,9 +23,10 @@ import { CommandDescriptionService } from './edit/command/description/command-de
 import { SelectionService } from './edit/selection/selection.service';
 import { ClipboardService } from './edit/clipboard/clipboard.service';
 import { KeyBindingService } from './key/key_binding.service';
+import { DragulaService } from 'ng2-dragula';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, FormsModule],
+  imports:      [ BrowserModule, HttpModule, FormsModule, DragulaModule],
   declarations: [
     AppComponent,
     ResizableCanvasComponent,
@@ -44,7 +46,8 @@ import { KeyBindingService } from './key/key_binding.service';
     CommandDescriptionService,
     SelectionService,
     KeyBindingService,
-    ClipboardService
+    ClipboardService,
+    DragulaService
    ],
   entryComponents: [ ]
 })

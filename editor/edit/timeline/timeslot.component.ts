@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectionService } from '../selection/selection.service';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'my-timeslot',
@@ -14,7 +15,18 @@ export class TimeslotComponent implements OnInit {
   @Output()
   public onDeleteSlot = new EventEmitter();
 
-  constructor(private selectionService: SelectionService) {  }
+  constructor(private selectionService: SelectionService, private dragulaService: DragulaService) {
+
+    this.dragulaService.setOptions('bag-block', {
+            removeOnSpill: false,
+            moves: function (el, container, target) {
+                if (target.classList) {
+                    return target.classList.contains('timeslot-timeblock');
+                }
+                return false;
+            }
+        });
+   }
 
 
   ngOnInit() {}

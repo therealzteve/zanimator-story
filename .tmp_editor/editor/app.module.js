@@ -5,10 +5,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
+var ng2_dragula_1 = require("ng2-dragula");
 /* Components */
 var app_component_1 = require("./app.component");
 var resizable_canvas_component_1 = require("./resizable-canvas/resizable-canvas.component");
@@ -27,6 +29,7 @@ var command_description_service_1 = require("./edit/command/description/command-
 var selection_service_1 = require("./edit/selection/selection.service");
 var clipboard_service_1 = require("./edit/clipboard/clipboard.service");
 var key_binding_service_1 = require("./key/key_binding.service");
+var ng2_dragula_2 = require("ng2-dragula");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +37,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, ng2_dragula_1.DragulaModule],
         declarations: [
             app_component_1.AppComponent,
             resizable_canvas_component_1.ResizableCanvasComponent,
@@ -54,7 +57,8 @@ AppModule = __decorate([
             command_description_service_1.CommandDescriptionService,
             selection_service_1.SelectionService,
             key_binding_service_1.KeyBindingService,
-            clipboard_service_1.ClipboardService
+            clipboard_service_1.ClipboardService,
+            ng2_dragula_2.DragulaService
         ],
         entryComponents: []
     })

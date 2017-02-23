@@ -25,6 +25,8 @@
       'angular2-color-picker': 'npm:angular2-color-picker',
       'nouislider': 'npm:nouislider',
       'ng2-nouislider': 'npm:ng2-nouislider',
+      'ng2-dragula': 'npm:ng2-dragula',
+      'dragula': 'npm:dragula',
       '@zAnimator': 'npm:zAnimator/lib/zAnimator.js',
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -49,7 +51,15 @@
       'ng2-nouislider': {
         main: 'src/nouislider.js',
         defaultExtension: 'js'
-       }
+      },
+      'ng2-dragula': {
+        defaultExtension: 'js',
+        main: 'index.js'
+      },
+      'dragula': {
+        defaultExtension: 'js',
+        main: 'dist/dragula.js'
+      }
     }
   });
 })(this);

@@ -87,6 +87,7 @@ my-resizable-canvas{
   overflow: auto;
   flex-shrink:0;
   background-color: #FFF;
+  height: 97%;
 }
 
 .timeslot-timeblock:hover{
@@ -125,7 +126,6 @@ my-timeslot > div {
 my-command-edit{
   cursor: pointer;
   display: block;
-  position: relative;
 }
 
 my-command-edit:hover{
@@ -179,5 +179,9 @@ my-timeslot > div{
   width: 28px;
   background-color: #777;
   border: 1px solid #000;
-  margin-right: 5px
+  margin-right: 5px;
+}
+
+.timeslot-bag{
+  display: inline-block;
 }

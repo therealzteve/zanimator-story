@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SelectionService } from '../selection/selection.service';
 
+
 @Component({
   selector: 'my-story-timeline',
   templateUrl: './timeline.component.html',
@@ -12,6 +13,8 @@ export class TimelineComponent {
   public story;
 
   constructor(private selectionService: SelectionService){
+
+
   }
 
   public addTimeslot(){
