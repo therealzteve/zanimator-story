@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var selection_service_1 = require("../selection/selection.service");
+var stories_service_1 = require("../../stories/stories.service");
 var TimelineComponent = (function () {
-    function TimelineComponent(selectionService) {
+    function TimelineComponent(selectionService, storiesService) {
         this.selectionService = selectionService;
+        this.storiesService = storiesService;
     }
     TimelineComponent.prototype.addTimeslot = function () {
         this.story.timeSlots.push([]);
+        this.storiesService.onStoryChanged.next();
     };
     TimelineComponent.prototype.selectSlot = function (slot, event) {
         this.selectionService.setSelectedSlot(slot);
@@ -26,6 +29,7 @@ var TimelineComponent = (function () {
         var index = this.story.timeSlots.indexOf(slot);
         if (index > -1) {
             this.story.timeSlots.splice(index, 1);
+            this.storiesService.onStoryChanged.next();
         }
     };
     return TimelineComponent;
@@ -40,7 +44,7 @@ TimelineComponent = __decorate([
         templateUrl: './timeline.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [selection_service_1.SelectionService])
+    __metadata("design:paramtypes", [selection_service_1.SelectionService, stories_service_1.StoriesService])
 ], TimelineComponent);
 exports.TimelineComponent = TimelineComponent;
 //# sourceMappingURL=timeline.component.js.map

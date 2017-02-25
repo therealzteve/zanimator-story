@@ -22,8 +22,10 @@ import { FullCommandEditorService } from './edit/command/command-edit.service';
 import { CommandDescriptionService } from './edit/command/description/command-description.service';
 import { SelectionService } from './edit/selection/selection.service';
 import { ClipboardService } from './edit/clipboard/clipboard.service';
+import { UndoService } from './edit/undo/undo.service';
 import { KeyBindingService } from './key/key_binding.service';
 import { DragulaService } from 'ng2-dragula';
+
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule, DragulaModule],
@@ -47,7 +49,8 @@ import { DragulaService } from 'ng2-dragula';
     SelectionService,
     KeyBindingService,
     ClipboardService,
-    DragulaService
+    DragulaService,
+    UndoService
    ],
   entryComponents: [ ]
 })

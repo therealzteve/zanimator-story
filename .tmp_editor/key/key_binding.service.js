@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var clipboard_service_1 = require("../edit/clipboard/clipboard.service");
+var undo_service_1 = require("../edit/undo/undo.service");
 var KeyBindingService = (function () {
-    function KeyBindingService(clipboardService) {
+    function KeyBindingService(clipboardService, undoService) {
         this.clipboardService = clipboardService;
+        this.undoService = undoService;
         var Mousetrap = require('/node_modules/mousetrap/mousetrap.js');
         Mousetrap.bind('ctrl+c', function (e) {
             console.log('copy');
@@ -25,12 +27,22 @@ var KeyBindingService = (function () {
             clipboardService.paste();
             return false;
         });
+        Mousetrap.bind('ctrl+z', function (e) {
+            console.log('undo');
+            undoService.undo();
+            return false;
+        });
+        Mousetrap.bind('ctrl+y', function (e) {
+            console.log('redo');
+            undoService.redo();
+            return false;
+        });
     }
     return KeyBindingService;
 }());
 KeyBindingService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [clipboard_service_1.ClipboardService])
+    __metadata("design:paramtypes", [clipboard_service_1.ClipboardService, undo_service_1.UndoService])
 ], KeyBindingService);
 exports.KeyBindingService = KeyBindingService;
 //# sourceMappingURL=key_binding.service.js.map

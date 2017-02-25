@@ -1,12 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
-import {FullCommandEditorService } from './command-edit.service';
+import { FullCommandEditorService } from './command-edit.service';
+import { StoriesService } from '../../stories/stories.service';
 
 @Component({
   selector: 'my-command-edit',
   templateUrl: './command.component.html',
   moduleId: module.id
 })
-export class CommandEditComponent implements OnInit {
+export class CommandEditComponent {
 
   @Input()
   public command;
@@ -18,13 +19,8 @@ export class CommandEditComponent implements OnInit {
   public editData = '';
   public deleteButtonVisible = false;
 
-  constructor(private fullCommandEditorService: FullCommandEditorService) {  }
+  constructor(private fullCommandEditorService: FullCommandEditorService, private storiesService: StoriesService) {  }
 
-  ngOnInit() {
-    if(!this.command.action){
-      this.fullCommandEditorService.editCommand(this.command);
-    }
-  }
 
   public openEditor(){
       this.editMode = true;
@@ -33,12 +29,22 @@ export class CommandEditComponent implements OnInit {
 
   public openFullEditor(){
     this.fullCommandEditorService.editCommand(this.command);
-    this.cancelEdit();
+    var saveSubscription = this.fullCommandEditorService.onSaved.subscribe(()=>{
+      saveSubscription.unsubscribe();
+      cancelSubscription.unsubscribe();
+      this.storiesService.onStoryChanged.next();
+    });
+
+    var cancelSubscription = this.fullCommandEditorService.onCancel.subscribe(()=>{
+      saveSubscription.unsubscribe();
+      cancelSubscription.unsubscribe();
+    });
   }
 
   public saveChanges(){
     this.command.data = JSON.parse(this.editData);
     this.editMode = false;
+    this.storiesService.onStoryChanged.next();
   }
 
   public cancelEdit(){

@@ -19,8 +19,14 @@ var StoriesService = (function () {
         this.http = http;
         this.stories = [];
         this.storiesServiceInitialized = new Subject_1.Subject();
+        this.onStoryChanged = new Subject_1.Subject();
         // Load first sample story
-        this.http.get('/test/test.json').map(function (res) { return res.json(); }).subscribe(function (data) { _this.addStory(data); _this.selectStory(0); _this.storiesServiceInitialized.next(); });
+        this.http.get('/test/test.json').map(function (res) { return res.json(); }).subscribe(function (data) {
+            _this.addStory(data);
+            _this.selectStory(0);
+            _this.storiesServiceInitialized.next();
+            _this.onStoryChanged.next();
+        });
     }
     StoriesService.prototype.addStory = function (story) {
         this.stories.push(story);

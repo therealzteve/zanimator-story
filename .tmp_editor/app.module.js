@@ -28,6 +28,7 @@ var command_edit_service_1 = require("./edit/command/command-edit.service");
 var command_description_service_1 = require("./edit/command/description/command-description.service");
 var selection_service_1 = require("./edit/selection/selection.service");
 var clipboard_service_1 = require("./edit/clipboard/clipboard.service");
+var undo_service_1 = require("./edit/undo/undo.service");
 var key_binding_service_1 = require("./key/key_binding.service");
 var ng2_dragula_2 = require("ng2-dragula");
 var AppModule = (function () {
@@ -58,7 +59,8 @@ AppModule = __decorate([
             selection_service_1.SelectionService,
             key_binding_service_1.KeyBindingService,
             clipboard_service_1.ClipboardService,
-            ng2_dragula_2.DragulaService
+            ng2_dragula_2.DragulaService,
+            undo_service_1.UndoService
         ],
         entryComponents: []
     })

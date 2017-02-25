@@ -15,7 +15,7 @@ export class FullCommandEditorComponent implements OnInit {
 
   constructor(
     private fullCommandEditorService: FullCommandEditorService,
-    private commandDescriptionService: CommandDescriptionService
+    private commandDescriptionService: CommandDescriptionService,
   ) {  }
 
   ngOnInit() {
@@ -53,11 +53,13 @@ export class FullCommandEditorComponent implements OnInit {
 
     this.command = null;
     this.tempCommand = null;
+    this.fullCommandEditorService.saveEdit();
   }
 
   public cancelEdit(){
     this.command = null;
     this.tempCommand = null;
+    this.fullCommandEditorService.cancelEdit();
   }
 
   public getProperties(){

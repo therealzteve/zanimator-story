@@ -15,9 +15,17 @@ require("rxjs/Rx");
 var FullCommandEditorService = (function () {
     function FullCommandEditorService() {
         this.onNewCommandToEdit = new Subject_1.Subject();
+        this.onSaved = new Subject_1.Subject();
+        this.onCancel = new Subject_1.Subject();
     }
     FullCommandEditorService.prototype.editCommand = function (command) {
         this.onNewCommandToEdit.next(command);
+    };
+    FullCommandEditorService.prototype.cancelEdit = function () {
+        this.onCancel.next();
+    };
+    FullCommandEditorService.prototype.saveEdit = function () {
+        this.onSaved.next();
     };
     return FullCommandEditorService;
 }());

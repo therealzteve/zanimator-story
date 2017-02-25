@@ -47,10 +47,12 @@ var FullCommandEditorComponent = (function () {
         this.command.data = this.editData;
         this.command = null;
         this.tempCommand = null;
+        this.fullCommandEditorService.saveEdit();
     };
     FullCommandEditorComponent.prototype.cancelEdit = function () {
         this.command = null;
         this.tempCommand = null;
+        this.fullCommandEditorService.cancelEdit();
     };
     FullCommandEditorComponent.prototype.getProperties = function () {
         if (this.tempCommand.action) {

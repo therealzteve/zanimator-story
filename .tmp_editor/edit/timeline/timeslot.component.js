@@ -12,11 +12,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var selection_service_1 = require("../selection/selection.service");
 var ng2_dragula_1 = require("ng2-dragula");
+var stories_service_1 = require("../../stories/stories.service");
+var command_edit_service_1 = require("../command/command-edit.service");
 var TimeslotComponent = (function () {
-    function TimeslotComponent(selectionService, dragulaService) {
+    function TimeslotComponent(selectionService, dragulaService, storiesService, fullCommandEditorService) {
         this.selectionService = selectionService;
         this.dragulaService = dragulaService;
+        this.storiesService = storiesService;
+        this.fullCommandEditorService = fullCommandEditorService;
         this.onDeleteSlot = new core_1.EventEmitter();
+        // Needed because otherwise there is an error from dragula because bag already exists
+        var bag = this.dragulaService.find('bag-block');
+        if (bag !== undefined)
+            this.dragulaService.destroy('bag-block');
         this.dragulaService.setOptions('bag-block', {
             removeOnSpill: false,
             moves: function (el, container, target) {
@@ -30,9 +38,39 @@ var TimeslotComponent = (function () {
     TimeslotComponent.prototype.ngOnInit = function () { };
     TimeslotComponent.prototype.addBlock = function () {
         this.timeslot.push([]);
+        this.storiesService.onStoryChanged.next();
     };
     TimeslotComponent.prototype.addCommandToBlock = function (block) {
-        block.push({});
+        var _this = this;
+        var newCommand = {};
+        this.fullCommandEditorService.editCommand(newCommand);
+        var saveSubscription = this.fullCommandEditorService.onSaved.subscribe(function () {
+            saveSubscription.unsubscribe();
+            cancelSubscription.unsubscribe();
+            block.push(newCommand);
+            _this.storiesService.onStoryChanged.next();
+        });
+        var cancelSubscription = this.fullCommandEditorService.onCancel.subscribe(function () {
+            saveSubscription.unsubscribe();
+            cancelSubscription.unsubscribe();
+        });
+    };
+    TimeslotComponent.prototype.deleteCommand = function (block, command) {
+        var index = block.indexOf(command);
+        if (index > -1) {
+            block.splice(index, 1);
+            this.storiesService.onStoryChanged.next();
+        }
+    };
+    TimeslotComponent.prototype.deleteBlock = function (block) {
+        var index = this.timeslot.indexOf(block);
+        if (index > -1) {
+            this.timeslot.splice(index, 1);
+            this.storiesService.onStoryChanged.next();
+        }
+    };
+    TimeslotComponent.prototype.deleteSlot = function () {
+        this.onDeleteSlot.emit();
     };
     TimeslotComponent.prototype.selectBlock = function (block) {
         this.selectionService.setSelectedBlock(block);
@@ -52,21 +90,6 @@ var TimeslotComponent = (function () {
     TimeslotComponent.prototype.isSelectedCommand = function (command) {
         return (this.selectionService.selectedCommand === command);
     };
-    TimeslotComponent.prototype.deleteCommand = function (block, command) {
-        var index = block.indexOf(command);
-        if (index > -1) {
-            block.splice(index, 1);
-        }
-    };
-    TimeslotComponent.prototype.deleteBlock = function (block) {
-        var index = this.timeslot.indexOf(block);
-        if (index > -1) {
-            this.timeslot.splice(index, 1);
-        }
-    };
-    TimeslotComponent.prototype.deleteSlot = function () {
-        this.onDeleteSlot.emit();
-    };
     return TimeslotComponent;
 }());
 __decorate([
@@ -83,7 +106,10 @@ TimeslotComponent = __decorate([
         templateUrl: 'timeslot.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [selection_service_1.SelectionService, ng2_dragula_1.DragulaService])
+    __metadata("design:paramtypes", [selection_service_1.SelectionService,
+        ng2_dragula_1.DragulaService,
+        stories_service_1.StoriesService,
+        command_edit_service_1.FullCommandEditorService])
 ], TimeslotComponent);
 exports.TimeslotComponent = TimeslotComponent;
 //# sourceMappingURL=timeslot.component.js.map

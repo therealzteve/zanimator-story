@@ -11,30 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var command_edit_service_1 = require("./command-edit.service");
+var stories_service_1 = require("../../stories/stories.service");
 var CommandEditComponent = (function () {
-    function CommandEditComponent(fullCommandEditorService) {
+    function CommandEditComponent(fullCommandEditorService, storiesService) {
         this.fullCommandEditorService = fullCommandEditorService;
+        this.storiesService = storiesService;
         this.commandDeleted = new core_1.EventEmitter();
         this.editMode = false;
         this.editData = '';
         this.deleteButtonVisible = false;
     }
-    CommandEditComponent.prototype.ngOnInit = function () {
-        if (!this.command.action) {
-            this.fullCommandEditorService.editCommand(this.command);
-        }
-    };
     CommandEditComponent.prototype.openEditor = function () {
         this.editMode = true;
         this.editData = JSON.stringify(this.command.data);
     };
     CommandEditComponent.prototype.openFullEditor = function () {
+        var _this = this;
         this.fullCommandEditorService.editCommand(this.command);
-        this.cancelEdit();
+        var saveSubscription = this.fullCommandEditorService.onSaved.subscribe(function () {
+            saveSubscription.unsubscribe();
+            cancelSubscription.unsubscribe();
+            _this.storiesService.onStoryChanged.next();
+        });
+        var cancelSubscription = this.fullCommandEditorService.onCancel.subscribe(function () {
+            saveSubscription.unsubscribe();
+            cancelSubscription.unsubscribe();
+        });
     };
     CommandEditComponent.prototype.saveChanges = function () {
         this.command.data = JSON.parse(this.editData);
         this.editMode = false;
+        this.storiesService.onStoryChanged.next();
     };
     CommandEditComponent.prototype.cancelEdit = function () {
         this.editMode = false;
@@ -64,7 +71,7 @@ CommandEditComponent = __decorate([
         templateUrl: './command.component.html',
         moduleId: module.id
     }),
-    __metadata("design:paramtypes", [command_edit_service_1.FullCommandEditorService])
+    __metadata("design:paramtypes", [command_edit_service_1.FullCommandEditorService, stories_service_1.StoriesService])
 ], CommandEditComponent);
 exports.CommandEditComponent = CommandEditComponent;
 //# sourceMappingURL=command.component.js.map
